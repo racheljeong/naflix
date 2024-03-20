@@ -2,6 +2,9 @@ import { Link, useMatch } from "react-router-dom";
 import styled from "styled-components";
 import { motion, useAnimation, useScroll } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { isModeAtom } from "../atom";
+import { darkTheme, lightTheme } from "../theme";
 
 const Nav = styled(motion.nav)`
   display: flex;
@@ -64,6 +67,24 @@ const Search = styled.span`
   }
 `;
 
+ const ThemeWrapper = styled.button`
+    position: relative;
+    width: 30px;
+    margin: 20px;
+    font-size: 18px;
+    justify-content: center;
+    display: flex;
+    border: none;
+    border-radius: 10px;
+    background-color: ${(props) => props.theme.bgColor};
+    box-shadow: ${(props) => props.theme.etcColor};
+
+ `;
+
+
+
+
+
 const Circle = styled(motion.span)`
   position: absolute;
   width: 5px;
@@ -88,6 +109,8 @@ const Input = styled(motion.input)`
   background-color: transparent;
   border: 1px solid whitesmoke;
 `;
+
+
 
 const logoVariants = {
     hidden: {
@@ -143,7 +166,20 @@ function Header() {
   const inputAnimation = useAnimation();
   const navAnimation = useAnimation();
   const { scrollY } = useScroll();
-  
+
+  //darkmode
+  const [darkMode, setDarkMode] = useRecoilState(isModeAtom);  //default : lightTheme
+
+  const toggleDarkMode = () => {
+    if(darkMode === lightTheme){
+      setDarkMode(darkTheme);
+      window.localStorage.setItem("theme",JSON.stringify(darkTheme));
+    } else {
+      setDarkMode(lightTheme);
+      window.localStorage.setItem("theme",JSON.stringify(lightTheme));
+    }
+  };
+    console.log(darkMode);
   const toggleSearch = () => {
     if (searchOpen) {
       inputAnimation.start({
@@ -225,6 +261,9 @@ function Header() {
             placeholder="Please enter a Title"
           />
         </Search>
+        <ThemeWrapper onClick={toggleDarkMode}>
+          {darkMode === lightTheme ? "🌚" : "🌝" }
+        </ThemeWrapper>
       </Col>
     </Nav>
   );

@@ -46,7 +46,7 @@ export const Box = styled(motion.div)<{ bgphoto: string }>`
   background-color: white;
   background-image: url(${(props) => props.bgphoto});
   background-size: cover;
-  border-radius: 20px;
+  border-radius: 10px;
   background-position: center center;
   height: 200px;
   color: red;
@@ -81,7 +81,8 @@ export const Overlay = styled(motion.div)`
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
 `;
-export const BigMovie = styled(motion.div)`
+
+export const BigMovie = styled(motion.div)<{bgphoto : string}>`
     position: absolute;
     width: 40vw;
     height: 80vh;
@@ -90,7 +91,11 @@ export const BigMovie = styled(motion.div)`
     margin: 0 auto;
     border-radius: 15px;
     overflow: hidden;
-    background-color: ${(props) => props.theme.bgColor};
+    background-image: url(${props => props.bgphoto});
+    background-size: cover;
+    border-radius: 10px;
+    background-position: center center;
+    //background-color: ${(props) => props.theme.bgColor};
 `;
 
 export const BigCover = styled.div`

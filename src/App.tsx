@@ -4,7 +4,7 @@ import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { darkTheme, lightTheme } from './theme';
 import { useRecoilValue } from 'recoil';
 import Header from './components/Header';
-//import { isDarkAtom } from './atom';
+import { isModeAtom } from './atom';
 
 const GlobalStyle = createGlobalStyle`
 //@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Skranji&display=swap');
@@ -74,10 +74,10 @@ a {
 
 function App() {
 
-  //const isDarkMode = useRecoilValue(isDarkAtom);
-  //console.log(isDarkMode);
+  const isMode = useRecoilValue(isModeAtom);
+
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={isMode === lightTheme ? lightTheme : darkTheme}>
       <GlobalStyle />
         <Header />
       <Outlet />
