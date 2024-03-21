@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
                 element : <Home />,
                 children : [
                     {
-                        path: ":movieId",
+                        path: "movies/:movieId",
                         element :<Home />
                     },
                 ],

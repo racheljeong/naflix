@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 
-import { Banner, BigMovie, Box, Info, Overlay, Overview, Row, Slider, Title, Wrapper, boxVariants, infoVariants, offset, rowVariants } from "../components/Common";
+import { Banner, BigMovie, Box, Info, ModalContainer, ModalDate, 
+         ModalEgg, ModalOverView, ModalTitle, Overlay, Overview, Row, Slider, 
+         Title, Wrapper, boxVariants, infoVariants, offset, rowVariants } from "../components/Common";
 import { IMovie, makeImagePath, makeImgPath } from "../api";
 import { Link, useLocation, useMatch, useMatches, useNavigate, useParams} from "react-router-dom";
 import { useState } from "react";
+
 
 function MovieList({movies} :{movies : IMovie[]}) {
   
@@ -15,7 +18,9 @@ function MovieList({movies} :{movies : IMovie[]}) {
     const { scrollY } = useScroll();
     const [leaving, setLeaving] = useState(false);
     const [index, setIndex] = useState(0);
+    
     const [modalMovie, setModalMovie] = useState<IMovie | null>(null);
+    console.log(modalMovie);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -45,16 +50,26 @@ function MovieList({movies} :{movies : IMovie[]}) {
       navigate(`movies/${movieId}`);
     };
 
+    const releaseDate = modalMovie?.release_date;
+    const formattedDate = releaseDate?.replace(/-/g, " ");
+    console.log(formattedDate);
+    
+    //const modalGenre = (modalMovie?.genre_ids)?.map((id) => genres[id]);
+    // const genreNames = modalMovie?.genre_ids?.map(id => {
+    //   const genre = genre_ids[id];
+    // console.log(modalGenreList);
+
       return (
          <>
-           <Banner onClick={increasingIndex}
+           <Banner 
             bgphoto={makeImagePath(sortedMovies[0].backdrop_path || "")}
-          >
-            <Title></Title>
-            <Overview></Overview>
+            onClick={increasingIndex}
+            >
+              <Title>{sortedMovies[0].title}</Title>
+              <Overview>{sortedMovies[0].overview}</Overview>
             </Banner>
             <Slider>
-            <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
+              <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
                 <Row
                   variants={rowVariants}
                   initial="hidden"
@@ -96,6 +111,13 @@ function MovieList({movies} :{movies : IMovie[]}) {
                   layoutId={modalMovie.id + ""}
                   bgphoto={makeImgPath(modalMovie.backdrop_path)}
                 >
+                <ModalTitle>{modalMovie.title}</ModalTitle>
+                <ModalContainer>
+                  <ModalDate>🎉{formattedDate}
+                    <ModalEgg>🍿{Math.round(modalMovie.vote_average)}</ModalEgg>
+                  </ModalDate>
+                  <ModalOverView>{modalMovie.overview}</ModalOverView>
+                </ModalContainer>
                 </BigMovie>
               </>
             ) : null}

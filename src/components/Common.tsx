@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   background-color : ${props => props.theme.bgColor};
+  //background: linear-gradient(to bottom, ${props => props.theme.bgColor}, #f1f2f6);
   padding-bottom: 200px;
 `;
 
@@ -19,14 +20,15 @@ export const Banner = styled.div<{ bgphoto: string }>`
 `;
 
 export const Title = styled.h2`
-  font-size: 68px;
-  margin-bottom: 20px; ;
-  color: ${props => props.theme.textColor};
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: ${props => props.theme.etcColor};
 `;
 
 export const Overview = styled.p`
-  font-size: 30px;
-  width: 50%;
+  font-size: 18px;
+  width: 30%;
+  color: ${props => props.theme.etcColor};
 `;
 
 export const Slider = styled.div`
@@ -36,8 +38,9 @@ export const Slider = styled.div`
 
 export const Row = styled(motion.div)`
   display: grid;
-  gap: 5px;
-  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  flex-wrap: wrap; // 요소가 넘칠 경우 다음 줄로 넘어가도록 설정
   position: absolute;
   width: 100%;
 `;
@@ -46,9 +49,9 @@ export const Box = styled(motion.div)<{ bgphoto: string }>`
   background-color: white;
   background-image: url(${(props) => props.bgphoto});
   background-size: cover;
-  border-radius: 10px;
+  border-radius: 5px;
   background-position: center center;
-  height: 200px;
+  height: 300px;
   color: red;
   font-size: 66px;
     &:first-child {
@@ -95,6 +98,8 @@ export const BigMovie = styled(motion.div)<{bgphoto : string}>`
     background-size: cover;
     border-radius: 10px;
     background-position: center center;
+    justify-content: center;
+    display: flex;
     //background-color: ${(props) => props.theme.bgColor};
 `;
 
@@ -105,20 +110,54 @@ export const BigCover = styled.div`
   height: 400px;
 `;
 
-export const BigTitle = styled.h3`
-  color: ${(props) => props.theme.textColor};
+export const ModalContainer = styled.div`
+  width: 36vw;
+  height: 30vh;
+  background-color: rgba(0,0,0,0.2);
+  position: absolute;
+  bottom: 10px;
+  padding-left: 10px;
+  padding-top: 20px;
+  border-radius: 10px;
+`;
+
+export const ModalTitle = styled.h3`
+  color: ${(props) => props.theme.etcColor};
   padding: 20px;
   font-size: 46px;
   position: relative;
-  top: -80px;
+  text-align: center;
+  font-family: serif;
+  //top: -80px;
 `;
 
-export const BigOverview = styled.p`
-  padding: 20px;
-  position: relative;
-  top: -80px;
+export const ModalOverView = styled.p`
+  position: absolute;
+  bottom: 10px;
+  padding-left: 10px;
+  margin-bottom: 10px;
   color: ${(props) => props.theme.etcColor};
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* 최대 표시 줄 수 */
+  -webkit-box-orient: vertical;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  word-wrap : break-word; //단어 단위로 줄바꿈
+
 `;
+
+export const ModalDate = styled.p`
+  color: ${(props) => props.theme.etcColor};
+  font-size: 18px;
+  font-family: "Bebas Neue", sans-serif;
+`;
+
+export const ModalEgg = styled.p`
+  color: ${(props) => props.theme.etcColor};
+  font-size: 21px;
+  font-family: "Bebas Neue", sans-serif;
+`;
+
 
 export const boxVariants = {
   normal: {
@@ -159,4 +198,4 @@ export const infoVariants = {
 };
 
 
-export const offset = 6;
+export const offset = 5;

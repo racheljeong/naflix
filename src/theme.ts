@@ -3,7 +3,7 @@
 import {DefaultTheme} from "styled-components";
 
 export const lightTheme: DefaultTheme = {
-    bgColor: "#f7f1e3",  //연 아이보리
+    bgColor: "#f1f2f6", 
     textColor: "#ff3f34", //레드오렌지
     etcColor: "#dfe4ea", //연회색
     accentColor : "#182C61" //남색

@@ -61,7 +61,7 @@ table {
 }
 body {
   font-weight: 300;
-  font-family: "Dancing Script", cursive;
+  font-family: "Almendra", serif;
   background: linear-gradient(to bottom, ${props => props.theme.bgColor}, #2f3640); /* 그라데이션 배경 */
   color:${(props) => props.theme.textColor};
   line-height: 1.2;

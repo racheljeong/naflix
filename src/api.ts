@@ -47,6 +47,7 @@ export interface IMovie {
 
 export interface IMovieDetail extends IMovie {
   belongs_to_collection: BelongsToCollection;
+  id: number; //생성함
   budget: number;
   homepage: string;
   genres: Genre[];
