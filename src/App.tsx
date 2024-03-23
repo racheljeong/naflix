@@ -58,6 +58,7 @@ table {
 }
 * {
   box-sizing: border-box;
+  
 }
 body {
   font-weight: 300;
@@ -65,6 +66,9 @@ body {
   background: linear-gradient(to bottom, ${props => props.theme.bgColor}, #2f3640); /* 그라데이션 배경 */
   color:${(props) => props.theme.textColor};
   line-height: 1.2;
+  // 가로스크롤 제어용
+  max-width: 100%; 
+  overflow-x: hidden;
 }
 a {
   text-decoration:none;
@@ -80,7 +84,7 @@ function App() {
     <ThemeProvider theme={isMode === lightTheme ? lightTheme : darkTheme}>
       <GlobalStyle />
         <Header />
-      <Outlet />
+        <Outlet />
     </ThemeProvider>
 
   );

@@ -1,6 +1,6 @@
 import { Link, useMatch } from "react-router-dom";
 import styled from "styled-components";
-import { motion, useAnimation, useScroll } from "framer-motion";
+import { motion, useAnimation, useMotionValueEvent, useScroll } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { isModeAtom } from "../atom";
@@ -11,11 +11,13 @@ const Nav = styled(motion.nav)`
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  width: 100%;
+  //width: 100%;
+  width: 100vw;
   top: 0;
   font-size: 14px;
   padding: 20px 60px;
   color: white;
+  
 `;
 
 const Col = styled.div`
@@ -45,7 +47,7 @@ const Item = styled.li`
   font-size: 16px;
   text-decoration: solid;
   font-family: auto;
-  color: #a1a0a0;
+  color: ${props => props.theme.textColor};
   transition: color 0.3s ease-in-out;
   position: relative;
   display: flex;
@@ -81,10 +83,6 @@ const Search = styled.span`
 
  `;
 
-
-
-
-
 const Circle = styled(motion.span)`
   position: absolute;
   width: 5px;
@@ -108,6 +106,7 @@ const Input = styled(motion.input)`
   font-size: 16px;
   background-color: transparent;
   border: 1px solid whitesmoke;
+  border-radius: 5px;
 `;
 
 
@@ -122,29 +121,7 @@ const logoVariants = {
         opacity: 1,
         pathLength: 1,
         fill: "#ed2d2d",
-        //repeat: Infinity,
       },
-    // normal: { 
-    //   fill: "rgba(255, 255, 255, 0)",
-    //   pathLength: 0, // 로고의 stroke를 0으로 설정하여 일단 보이지 않게 함
-    //   transition: {
-    //     fill: { duration: 2 }, // 로고가 채워지는 애니메이션 지속 시간 설정
-    //     pathLength: { duration: 2, ease: "linear" } // 로고의 stroke가 나타나는 애니메이션 지속 시간 및 easing 설정
-    //   }
-    // },
-    // active: {
-    //   fill: "#f42828", // 로고가 채워지는 색상
-    //   pathLength: 1, // 로고의 stroke가 완전히 보이도록 하는 값
-    //   transition: {
-
-    //   repeat: Infinity,
-    //   pathLength: {
-    //       duration: 2, // 로고 stroke 애니메이션에 사용될 시간 설정
-    //       delay: 1 // 로고 stroke 애니메이션 시작 전 지연 시간 설정
-    //     },
-    //     fill: { duration: 1.5 } // 로고가 채워지는 애니메이션의 추가 설정
-    //   }
-    // },
   };
 
 const navVariants = {
@@ -179,7 +156,8 @@ function Header() {
       window.localStorage.setItem("theme",JSON.stringify(lightTheme));
     }
   };
-    console.log(darkMode);
+
+
   const toggleSearch = () => {
     if (searchOpen) {
       inputAnimation.start({
@@ -191,15 +169,30 @@ function Header() {
     setSearchOpen((prev) => !prev);
   };
 
-  useEffect(() => {
-    scrollY.onChange(() => {
+    // 이벤트 핸들러 함수 정의
+    const handleScrollChange = () => {
       if (scrollY.get() > 80) {
         navAnimation.start("scroll");
       } else {
         navAnimation.start("top");
       }
-    });
-  }, [scrollY, navAnimation]);
+    };
+  
+    useMotionValueEvent(scrollY, "change", handleScrollChange);
+
+
+    //useEffect(() => {
+    // useMotionValueEvent(scrollY, "change", () => {
+    // scrollY.onChange(() => {
+    //   if (scrollY.get() > 80) {
+    //     navAnimation.start("scroll");
+    //   } else {
+    //     navAnimation.start("top");
+    //   }
+    // });
+    // 컴포넌트 함수 내에서 useMotionValueEvent 호출
+    //}, [scrollY, navAnimation]);
+
 
   return (
     <Nav variants={navVariants} animate={navAnimation} initial={"top"}>
@@ -239,7 +232,7 @@ function Header() {
         </Items>
       </Col>
       <Col>
-        <Search>
+         <Search>
           <motion.svg
             onClick={toggleSearch}
             animate={{ x: searchOpen ? -210 : 0 }}
@@ -263,7 +256,7 @@ function Header() {
         </Search>
         <ThemeWrapper onClick={toggleDarkMode}>
           {darkMode === lightTheme ? "🌚" : "🌝" }
-        </ThemeWrapper>
+        </ThemeWrapper> 
       </Col>
     </Nav>
   );

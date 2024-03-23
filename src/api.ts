@@ -68,7 +68,7 @@ interface BelongsToCollection {
   backdrop_path: string;
 }
 
-interface Genre {
+export interface Genre {
   id: number;
   name: string;
 }

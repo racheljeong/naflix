@@ -3,10 +3,10 @@
 import {DefaultTheme} from "styled-components";
 
 export const lightTheme: DefaultTheme = {
-    bgColor: "#f1f2f6", 
-    textColor: "#ff3f34", //레드오렌지
+    bgColor: "#f1f2f6", //whitesmoke
+    textColor: "#ffffff",  //white 
     etcColor: "#dfe4ea", //연회색
-    accentColor : "#182C61" //남색
+    accentColor : "#fd9644"  //귤색 
   };
   
   export const darkTheme: DefaultTheme = {
