@@ -43,7 +43,7 @@ function MovieList({movies} :{movies : IMovie[]}) {
       navigate(`movies/${movieId}`);
 
     };
-
+    
       return (
          <>
            <Banner 
