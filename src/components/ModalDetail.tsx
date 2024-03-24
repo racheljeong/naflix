@@ -28,7 +28,7 @@ export const Overlay = styled(motion.div)`
     opacity: 0;
 `;
 
-export const BigMovie = styled(motion.div)<{bgphoto : string}>`
+export const BigMovie = styled(motion.div)<{$bgphoto : string}>`
     position: absolute;
     width: 40vw;
     height: 80vh;
@@ -37,7 +37,7 @@ export const BigMovie = styled(motion.div)<{bgphoto : string}>`
     margin: 0 auto;
     border-radius: 15px;
     overflow: hidden;
-    background-image: url(${props => props.bgphoto});
+    background-image: url(${props => props.$bgphoto});
     background-size: cover;
     border-radius: 10px;
     background-position: center center;
@@ -124,7 +124,7 @@ function ModalDetail({modalMovie}: IDetailProps) {
           key={modalMovie.id}
           style={{ top: scrollY.get() + 100 }}
           layoutId={modalMovie.id + ""}
-          bgphoto={makeImgPath(modalMovie.backdrop_path)}
+          $bgphoto={makeImgPath(modalMovie.backdrop_path)}
         >
         <>        
         <ModalTitle>{modalMovie.title}</ModalTitle>

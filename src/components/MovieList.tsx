@@ -47,7 +47,7 @@ function MovieList({movies} :{movies : IMovie[]}) {
       return (
          <>
            <Banner 
-            bgphoto={makeImagePath(sortedMovies[0].backdrop_path || "")}
+            $bgphoto={makeImagePath(sortedMovies[0].backdrop_path || "")}
             onClick={increasingIndex}
             >
               <Title>{sortedMovies[0].title}</Title>
@@ -73,7 +73,7 @@ function MovieList({movies} :{movies : IMovie[]}) {
                           variants={boxVariants}
                           transition={{ type: "tween" }}
                           onClick={() => modalClick(movie.id)}
-                          bgphoto={makeImgPath(movie.backdrop_path, "w500")}>
+                          $bgphoto={makeImgPath(movie.backdrop_path, "w500")}>
                         <Info variants={infoVariants}>
                           <h4>{movie.title}</h4>
                         </Info>

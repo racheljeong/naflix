@@ -7,7 +7,6 @@ import Header from './components/Header';
 import { isModeAtom } from './atom';
 
 const GlobalStyle = createGlobalStyle`
-//@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Skranji&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,

@@ -9,14 +9,14 @@ export const Wrapper = styled.div`
 `;
 
 
-export const Banner = styled.div<{ bgphoto: string }>`
+export const Banner = styled.div<{ $bgphoto: string }>`
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 60px;
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),
-      url(${(props) => props.bgphoto});
+      url(${(props) => props.$bgphoto});
     background-size: cover;
 `;
 
@@ -46,9 +46,9 @@ export const Row = styled(motion.div)`
   width: 100%;
 `;
 
-export const Box = styled(motion.div)<{ bgphoto: string }>`
+export const Box = styled(motion.div)<{ $bgphoto: string }>`
   background-color: white;
-  background-image: url(${(props) => props.bgphoto});
+  background-image: url(${(props) => props.$bgphoto});
   background-size: cover;
   border-radius: 5px;
   background-position: center center;
