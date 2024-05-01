@@ -1,46 +1,23 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
+#### Available Scripts
+In the project directory, you can run: **`npm start`**
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+##### ☑️api 데이터를 받아오기 위해  React Query을 사용하고, navigation, movies list, modal등을 구현하기 위해 Framer Motion을 사용하였으며,recoil 을 사용하여 전체 앱의 darkmode/lightmode를 구현하였습니다.
+##### Project Notion : https://www.notion.so/da-som/_Netflix-Clone_2-Naflix-e6d19793e7414088992ba0968ab9f6c7
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ ✨ Language : javascript, typescript, React.js   
+ ✨ CSS : Styled Components and Motion build
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ + Home Page (`/`) : Popular 탭을 가리키며 인기있는 영화리스트를 보여줍니다
+ + Coming Soon Page (`/coming-soon`): 상영예정인 영화리스트를 보여줍니다.
+ + Now Playing Page (`/now-playing`) : 현재 상영중인 영화리스트를 보여줍니다.!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img src="https://github.com/racheljeong/naflix/assets/73115272/500d0caa-2611-4ab9-9787-326c8f41cf90.png" width="450" height="350"/>     
+<img src="https://github.com/racheljeong/naflix/assets/73115272/a97eaf91-0df0-492b-ba02-0c1e2ae36283.png" width="450" height="350"/>      
+<img src="https://github.com/racheljeong/naflix/assets/73115272/02a892a5-6fcc-4c0d-bc72-e5a891caf838.png" width="450" height="350"/>      
+<img src="https://github.com/racheljeong/naflix/assets/73115272/727456d5-eca7-41c9-943f-59098f533bcb.png" width="450" height="350"/>   
